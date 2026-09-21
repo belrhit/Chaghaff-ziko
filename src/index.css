@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #000000;
+  --color-brand-gray: #EDF2F4;
+  --color-brand-cream: #FFFCF2;
+  --animate-marquee: marquee 22s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+  
+  h1, h2, h3, .font-heading {
+    font-family: 'Anton', 'Montserrat', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  .font-brand {
+    font-family: 'Anton', 'Oswald', sans-serif;
+    letter-spacing: 0.18em;
+  }
+
+  .font-subheading {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Custom animation fallback for animate-marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom streetwear scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EDF2F4;
+}

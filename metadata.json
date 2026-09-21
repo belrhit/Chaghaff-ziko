@@ -1,0 +1,6 @@
+{
+  "name": "CHAGHAF | Official Online Store",
+  "description": "Clean, modern, and premium online store interface for clothing brand CHAGHAF with interactive product gallery, image zoom, and streamlined checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
