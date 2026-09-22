@@ -80,7 +80,7 @@ export const CheckoutSection: React.FC<CheckoutSectionProps> = ({
         <div className="w-full mb-8 p-5 sm:p-6 rounded-2xl bg-[#121215] border border-[#27272a] shadow-2xl text-left space-y-3">
           <div className="flex items-center justify-between pb-3 border-b border-[#27272a]">
             <span className="text-sm font-medium text-[#EDF2F4]/80">Prix de l'article</span>
-            <span className="font-mono text-base font-bold text-white">180 MAD</span>
+            <span className="font-mono text-base font-bold text-white">170 MAD</span>
           </div>
 
           <div className="flex items-center justify-between pb-3 border-b border-[#27272a]">
@@ -91,7 +91,7 @@ export const CheckoutSection: React.FC<CheckoutSectionProps> = ({
           <div className="flex items-center justify-between pt-1 text-lg sm:text-xl font-heading font-black">
             <span className="text-white uppercase tracking-wider">Total à payer</span>
             <span className="text-[#FFFFFF] bg-white/10 px-3 py-1 rounded-lg border border-white/20">
-              215 MAD
+              205 MAD
             </span>
           </div>
         </div>
