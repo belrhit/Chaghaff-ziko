@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import heroLogo from '../assets/images/chaghaf_hero_logo_cropped.png';
 
 interface HeroSectionProps {
   onScrollDown: () => void;
@@ -24,9 +25,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollDown }) => {
       <div className="flex-1 flex items-center justify-center my-auto w-full max-w-4xl px-4">
         <img
           id="hero-brand-logo-img"
-          src="/src/assets/images/chaghaf_calligraphy_white.svg"
+          src={heroLogo}
           alt="CHAGHAF Logo"
-          className="w-64 md:w-80 lg:w-96 mx-auto object-contain select-none transition-transform duration-300 hover:scale-105"
+          className="w-72 sm:w-88 md:w-[26rem] lg:w-[30rem] max-w-full mx-auto object-contain select-none transition-transform duration-300 hover:scale-105"
         />
       </div>
 

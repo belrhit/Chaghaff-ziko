@@ -1,4 +1,6 @@
 import { Product } from '../types';
+import tshirtBack from '../assets/images/chaghaf_tshirt_back_1789839327913.jpg';
+import tshirtDetail from '../assets/images/chaghaf_tshirt_detail_1789839339078.jpg';
 
 export const CHAGHAF_PRODUCT: Product = {
   id: 'chg-tshirt-01',
@@ -20,21 +22,15 @@ export const CHAGHAF_PRODUCT: Product = {
   images: [
     {
       id: 'img-1',
-      src: '/src/assets/images/chaghaf_tshirt_front_1789839315903.jpg',
-      alt: 'CHAGHAF T-Shirt - Front',
+      src: tshirtBack,
+      alt: 'CHAGHAF T-Shirt - Back',
       label: '01'
     },
     {
       id: 'img-2',
-      src: '/src/assets/images/chaghaf_tshirt_back_1789839327913.jpg',
-      alt: 'CHAGHAF T-Shirt - Back',
-      label: '02'
-    },
-    {
-      id: 'img-3',
-      src: '/src/assets/images/chaghaf_tshirt_detail_1789839339078.jpg',
+      src: tshirtDetail,
       alt: 'CHAGHAF T-Shirt - Detail',
-      label: '03'
+      label: '02'
     }
   ],
   inStock: true,
