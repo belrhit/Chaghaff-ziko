@@ -46,9 +46,9 @@ export const CheckoutSection: React.FC<CheckoutSectionProps> = ({
       `• Adresse Complète: ${formData.address}\n` +
       `• Taille Choisie: ${formData.selectedSize}\n\n` +
       `RÉSUMÉ DU TARIF:\n` +
-      `• Prix Produit: 180 MAD\n` +
+      `• Prix Produit: 170 MAD\n` +
       `• Frais de Livraison: 35 MAD\n` +
-      `• TOTAL À PAYER À LA LIVRAISON: 215 MAD\n\n` +
+      `• TOTAL À PAYER À LA LIVRAISON: 205 MAD\n\n` +
       `Date: ${new Date().toLocaleDateString('fr-FR')}`
     );
 
