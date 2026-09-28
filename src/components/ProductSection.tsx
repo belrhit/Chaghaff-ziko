@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { ZoomIn } from 'lucide-react';
 
+// 1. On importe la nouvelle image depuis src/assets/images
+import tshirtBlack2 from '../assets/images/tshirt-black-2.jpg';
+
 const SINGLE_PRODUCT = {
   title: 'T-Shirt Oversize "Chaghaf"',
   price: 170,
@@ -12,10 +15,17 @@ const SINGLE_PRODUCT = {
     '- 240 GSM',
     "- L'Impression: Sérigraphie",
   ],
-  image: {
-    src: '/images/tshirt-black.jpg',
-    alt: 'T-Shirt Oversize Chaghaf Noir',
-  },
+  images: [
+    {
+      src: '/images/tshirt-black.jpg',
+      alt: 'T-Shirt Oversize Chaghaf Noir - Face',
+    },
+    {
+      // 2. On utilise la variable importée ici
+      src: tshirtBlack2,
+      alt: 'T-Shirt Oversize Chaghaf Noir - Dos/Détail',
+    },
+  ],
 };
 
 interface ProductSectionProps {
@@ -32,6 +42,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   const [internalSize, setInternalSize] = useState<string>(SINGLE_PRODUCT.sizes[0]);
   const activeSize = externalSelectedSize ?? internalSize;
 
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [isHoverZoom, setIsHoverZoom] = useState<boolean>(false);
   const [zoomCoords, setZoomCoords] = useState<{ x: number; y: number }>({ x: 50, y: 50 });
 
@@ -55,7 +66,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
     setZoomCoords({ x, y });
   };
 
-  const { image } = SINGLE_PRODUCT;
+  const activeImage = SINGLE_PRODUCT.images[activeImageIndex];
 
   return (
     <section
@@ -63,7 +74,8 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
       className="w-full min-h-screen py-24 px-4 sm:px-6 bg-[#000000] text-[#FFFFFF] flex flex-col justify-center items-center"
     >
       <div className="w-full max-w-xl mx-auto flex flex-col items-center">
-        {/* Conteneur Image Unique */}
+
+        {/* Conteneur Image Principale */}
         <div
           id="product-image-container"
           className="relative w-full aspect-[4/5] bg-[#0c0c0e] rounded-3xl overflow-hidden border border-[#27272a] shadow-2xl select-none group cursor-crosshair"
@@ -71,10 +83,9 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           onMouseEnter={() => setIsHoverZoom(true)}
           onMouseLeave={() => setIsHoverZoom(false)}
         >
-          {/* Image Principale */}
           <img
-            src={image.src}
-            alt={image.alt}
+            src={activeImage.src}
+            alt={activeImage.alt}
             className={`w-full h-full object-cover transition-opacity duration-200 ${isHoverZoom ? 'opacity-0' : 'opacity-100'
               }`}
           />
@@ -84,7 +95,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                backgroundImage: `url(${image.src})`,
+                backgroundImage: `url(${activeImage.src})`,
                 backgroundPosition: `${zoomCoords.x}% ${zoomCoords.y}%`,
                 backgroundSize: '220%',
                 backgroundRepeat: 'no-repeat',
@@ -101,8 +112,28 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           )}
         </div>
 
+        {/* Miniatures (Thumbnails) */}
+        <div className="flex w-full gap-3 mt-4">
+          {SINGLE_PRODUCT.images.map((image, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveImageIndex(index)}
+              className={`relative aspect-[4/5] w-20 sm:w-24 rounded-xl overflow-hidden border-2 transition-all duration-200 ${activeImageIndex === index
+                ? 'border-[#FFFFFF] opacity-100 shadow-[0_0_15px_rgba(255,255,255,0.1)]'
+                : 'border-transparent opacity-40 hover:opacity-100 cursor-pointer'
+                }`}
+            >
+              <img
+                src={image.src}
+                alt={`Miniature ${index + 1}`}
+                className="w-full h-full object-cover bg-[#0c0c0e]"
+              />
+            </button>
+          ))}
+        </div>
+
         {/* Détails du produit */}
-        <div className="w-full mt-8 pt-6 border-t border-[#27272a] space-y-6">
+        <div className="w-full mt-6 pt-6 border-t border-[#27272a] space-y-6">
           <div className="text-left space-y-2">
             <h3 className="font-heading text-2xl font-black uppercase text-white tracking-wider">
               {SINGLE_PRODUCT.title}
